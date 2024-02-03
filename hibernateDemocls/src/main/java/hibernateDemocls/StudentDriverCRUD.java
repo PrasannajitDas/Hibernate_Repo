@@ -14,7 +14,7 @@ public class StudentDriverCRUD {
 		EntityTransaction et = em.getTransaction();
 
 		System.out.println("1.Add Student(Insert Data)\n2.View Student by ID(Fetch Data)"
-				+ "\n3.Delete student by Id(Delete Data)" + "\n4.Update Student by ID(Update Data)s");
+				+ "\n3.Delete student by Id(Delete Data)" + "\n4.Update Student by ID(Update Data)");
 		Scanner sc = new Scanner(System.in);
 		int choice = sc.nextInt();
 		switch (choice) {
@@ -66,13 +66,18 @@ public class StudentDriverCRUD {
 			System.out.println("Enter id to delete :");
 			int id2 = sc.nextInt();
 			Student s1 = em.find(Student.class, id2);
-			et.begin();
-			em.remove(s1);
-			et.commit();
+			if (s1 != null) {
+				et.begin();
+				em.remove(s1);
+				et.commit();
+			} else {
+				System.out.println("Invalid Id");
+			}
 
 			break;
 
 		case 4:
+			System.out.println("Enter What do you want to Update :");
 			System.out.println("1.Update Name\n2.Update Age\n3.Update YoP");
 			int c = sc.nextInt();
 			switch (c) {
@@ -82,10 +87,14 @@ public class StudentDriverCRUD {
 				Student s2 = em.find(Student.class, id3);
 				System.out.println("Enter name to update :");
 				String name = sc.next();
-				s2.setName(name);
-				et.begin();
-				em.merge(s2);
-				et.commit();
+				if (s2 != null) {
+					s2.setName(name);
+					et.begin();
+					em.merge(s2);
+					et.commit();
+				} else {
+					System.out.println("Invalid Id");
+				}
 				break;
 
 			case 2:
@@ -94,10 +103,14 @@ public class StudentDriverCRUD {
 				System.out.println("Enter age to update :");
 				int age = sc.nextInt();
 				Student s3 = em.find(Student.class, id4);
-				s3.setAge(age);
-				et.begin();
-				em.merge(s3);
-				et.commit();
+				if (s3 != null) {
+					s3.setAge(age);
+					et.begin();
+					em.merge(s3);
+					et.commit();
+				} else {
+					System.out.println("Invalid Id");
+				}
 				break;
 
 			case 3:
@@ -106,10 +119,14 @@ public class StudentDriverCRUD {
 				System.out.println("Enter Yop to update :");
 				int yop = sc.nextInt();
 				Student s4 = em.find(Student.class, id5);
-				s4.setYop(yop);
-				et.begin();
-				em.merge(s4);
-				et.commit();
+				if (s4 != null) {
+					s4.setYop(yop);
+					et.begin();
+					em.merge(s4);
+					et.commit();
+				} else {
+					System.out.println("Invalid Id");
+				}
 				break;
 
 			default:
