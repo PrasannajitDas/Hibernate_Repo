@@ -13,8 +13,8 @@ public class StudentDriverCRUD {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction et = em.getTransaction();
 
-		System.out.println(
-				"1.Add Student(Insert Data)\n2.View Student bt ID(Fetch Data)" + "\n3.Delete Data\n4.Update Data");
+		System.out.println("1.Add Student(Insert Data)\n2.View Student by ID(Fetch Data)"
+				+ "\n3.Delete student by Id(Delete Data)" + "\n4.Update Student by ID(Update Data)s");
 		Scanner sc = new Scanner(System.in);
 		int choice = sc.nextInt();
 		switch (choice) {
@@ -55,11 +55,67 @@ public class StudentDriverCRUD {
 			int id = sc.nextInt();
 			Student s = em.find(Student.class, id);
 			if (s != null) {
-				System.out.println(s.getId());
+				System.out.println(s.getId() + "\t" + s.getName() + "\t" + s.getAge() + "\t" + s.getYop());
+			} else {
+				System.out.println("Invalid Id !");
 			}
 
 			break;
 
+		case 3:
+			System.out.println("Enter id to delete :");
+			int id2 = sc.nextInt();
+			Student s1 = em.find(Student.class, id2);
+			et.begin();
+			em.remove(s1);
+			et.commit();
+
+			break;
+
+		case 4:
+			System.out.println("1.Update Name\n2.Update Age\n3.Update YoP");
+			int c = sc.nextInt();
+			switch (c) {
+			case 1:
+				System.out.println("Enter id to update :");
+				int id3 = sc.nextInt();
+				Student s2 = em.find(Student.class, id3);
+				System.out.println("Enter name to update :");
+				String name = sc.next();
+				s2.setName(name);
+				et.begin();
+				em.merge(s2);
+				et.commit();
+				break;
+
+			case 2:
+				System.out.println("Enter id to update :");
+				int id4 = sc.nextInt();
+				System.out.println("Enter age to update :");
+				int age = sc.nextInt();
+				Student s3 = em.find(Student.class, id4);
+				s3.setAge(age);
+				et.begin();
+				em.merge(s3);
+				et.commit();
+				break;
+
+			case 3:
+				System.out.println("Enter id to update :");
+				int id5 = sc.nextInt();
+				System.out.println("Enter Yop to update :");
+				int yop = sc.nextInt();
+				Student s4 = em.find(Student.class, id5);
+				s4.setYop(yop);
+				et.begin();
+				em.merge(s4);
+				et.commit();
+				break;
+
+			default:
+				System.out.println("Invalid Input !");
+
+			}
 		}
 
 	}
