@@ -1,4 +1,4 @@
-package onetoone;
+ package onetoone;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
