@@ -10,10 +10,10 @@ import javax.persistence.OneToOne;
 @Entity
 public class Exam {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)//to auto-increment id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)// using @GeneratedValue annotation to auto-increment id 
 	private int id;
 	
-	@Column(unique = true)
+	@Column(unique = true)//Using @Column annotation to add unique values only (unique constraint)
 	private String name;
 	
 	private String address;

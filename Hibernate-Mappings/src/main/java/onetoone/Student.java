@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class Student {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)//to auto increment id using @GeneratedValue annotation
+	@GeneratedValue(strategy = GenerationType.IDENTITY)//to auto increment id, using @GeneratedValue annotation
 	private int id;
 	
 	private String name;
