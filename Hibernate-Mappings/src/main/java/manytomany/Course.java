@@ -17,8 +17,9 @@ public class Course {
 	private String name;
 	private String duration;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy = "course") //mapped-by attribute is used inform hibernate to not create extra table for student again .
 	private List<Student> student;
+//	We will use mappedBy attribute which table we don't want to create.
 
 	public int getId() {
 		return id;
