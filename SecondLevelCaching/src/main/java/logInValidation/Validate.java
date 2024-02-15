@@ -1,4 +1,4 @@
-package logInValidation;
+ package logInValidation;
 
 import java.util.List;
 import java.util.Scanner;
@@ -19,7 +19,7 @@ public class Validate {
 		System.out.println("Enter password:");
 		String password=sc.next();
 		
-		Query query=em.createQuery("select u from User2 u where u.email=?1 and u.password=?2");
+		Query query=em.createQuery("select u from User2 u where u.email=?1 and u.password=?2"); 
 //																placeholder1	placeholder2
 //		now this is incomplete query, we have to set the values.In JDBC, we are setting values according to 
 //		datatypes, but in hibernate we have to use setParameter(placeholder, value) directly,hibernate will
